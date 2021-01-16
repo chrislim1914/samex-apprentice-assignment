@@ -70,7 +70,6 @@ export default {
       }
 
       // TODO POST request using axios and trimming
-
     }
   },
   created () {
