@@ -30,11 +30,11 @@ PHP7.1 or greater
 https://www.php.net/downloads.php
 ```
 
-MySQL/MariaDB
+NodeJS
 ```
-https://dev.mysql.com/downloads/
+https://nodejs.org/en/
 ```
-### Prerequisites
+### Setup
 navigate into root folder
 congifure the backend
 backend/app/config/config.php
