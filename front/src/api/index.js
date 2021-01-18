@@ -2,11 +2,8 @@
  * api routes
  */
 
-import {
-  apiURL
-} from '@/config.js'
+export const apiURL = 'http://localhost:8081'
 
 export const user = {
-  signin: apiURL + '/login',
-  signup: apiURL + '/register'
+  registerUser: `${apiURL}/users/register`
 }

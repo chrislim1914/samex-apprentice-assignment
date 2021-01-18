@@ -3,9 +3,7 @@
  */
 import axios from 'axios'
 
-import {
-  user
-} from '@/api'
+import { user } from '../../api/index'
 
 /**
  * @const state
@@ -21,20 +19,12 @@ const state = {
  * @type {object}
  */
 const actions = {
-  signinUser: async (context, payload) => {
+  registerUser: async (context, payload) => {
     try {
-      var resp = await axios.post(user.signin, payload)
-      context.commit('setUser', resp.data)
+      var resp = await axios.post(user.registerUser, payload)
+      context.commit('setRegisterResponse', resp.data)
     } catch (error) {
-      context.commit('updateResponseData', 'General Error')
-    }
-  },
-  signupUser: async (context, payload) => {
-    try {
-      var resp = await axios.post(user.signup, payload)
-      context.commit('updateResponseData', resp.data)
-    } catch (error) {
-      context.commit('updateResponseData', 'General Error')
+      context.commit('setRegisterResponse', 'General Error')
     }
   }
 }
@@ -44,22 +34,8 @@ const actions = {
  * @type {object}
  */
 const mutations = {
-  /**
-     * Set user state
-     * @param state
-     * @param data
-     */
-  setUser: (state, data) => {
-    state.user = data
-  },
-
-  /**
-     * Update response message state
-     * @param state
-     * @param status
-     */
-  updateResponseData: (state, status) => {
-    state.responseData = status
+  setRegisterResponse: (state, data) => {
+    state.registerResponse = data
   }
 }
 

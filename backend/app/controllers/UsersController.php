@@ -21,6 +21,9 @@ class UsersController extends Controller{
             // Converts it into a PHP object
             $data = json_decode($jsondata, true);
 
+            // unique hexadecimal ID
+            $data['userId'] = md5($data['email']);
+
             $send = $this->usersModel->addUser($data);
 
             if($send) {

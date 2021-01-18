@@ -15,7 +15,7 @@
         </div>
         <div class="form-group mb-4">
           <label for="lastname">Last Name</label>
-          <input type="text" id="lastname">
+          <input type="text" id="lastname" v-model="lastname">
         </div>
         <div class="form-group mb-4">
           <label for="emailadd">Email Address*</label>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import validate from '@/validate'
 export default {
   name: 'MainComponent',
@@ -53,12 +54,21 @@ export default {
       errorNoFirstName: false
     }
   },
+  computed: {
+    ...mapState({
+      user: ({users}) => users.user,
+      registerResponse: ({users}) => users.registerResponse
+    })
+  },
   watch: {
     phoneno (c) {
       this.phoneno = c.replace(/[^0-9]/g, '')
     }
   },
   methods: {
+    ...mapActions([
+      'registerUser'
+    ]),
     register () {
       this.errorNoFirstName = !this.firstname
       this.errorInvalidEmail = !validate.isEmail(this.email)
@@ -67,14 +77,25 @@ export default {
         this.errorNoFirstName ||
         this.errorInvalidEmail
       ) {
+        return
       }
 
-      // TODO POST request using axios and trimming
+      this.registerUser({
+        email: this.email,
+        firstname: this.firstname.trim(),
+        lastname: this.lastname.trim(),
+        phoneno: this.phoneno
+      }).then(() => {
+        this.$toasted.show(
+          'Registration completed.',
+          {type: 'success'}
+        )
+        this.firstname = ''
+        this.lastname = ''
+        this.email = ''
+        this.phoneno = ''
+      })
     }
-  },
-  created () {
-    // console.log(this.errorInvalidEmail)
-    console.log(this.email)
   }
 }
 </script>
