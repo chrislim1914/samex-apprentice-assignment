@@ -19,3 +19,32 @@ Your form should have the following fields: First Name, Last Name, Email Address
     Use webhook.site to obtain an open API endpoint that you can use for this task.
     Your script should be written in object-oriented PHP. With classes and methods.
     You may use vanilla JavaScript, jQuery or any other library you're familiar with for the front-end form validation.
+
+## Getting Started
+### Prerequisites
+
+What things you need to install the software and how to install them
+
+PHP7.1 or greater
+```
+https://www.php.net/downloads.php
+```
+
+MySQL/MariaDB
+```
+https://dev.mysql.com/downloads/
+```
+### Prerequisites
+navigate into root folder
+congifure the backend
+backend/app/config/config.php
+run php -S localhost:8081 -t public
+run the front-end
+cd front/
+npm install
+npm run start
+
+## Authors
+
+* *GITHUB Christopher Lim* -[chrislim1914](https://github.com/chrislim1914)
+* *GITLAB Christopher Lim* -[chrislim1914](https://gitlab.com/chrislim1914)
