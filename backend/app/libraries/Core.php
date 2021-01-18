@@ -51,10 +51,14 @@ class Core {
      */
     private function getController($url) {
         switch ($url[0]) {
-            case 'register':
+            case 'index':
                 $this->currentController = ucwords($url[0]).'Controller';
                 require_once('../app/controllers/' . $this->currentController . '.php');
                 break;  
+            case 'users':
+                $this->currentController = ucwords($url[0]).'Controller';
+                require_once('../app/controllers/' . $this->currentController . '.php');
+                break;
             default:
                 require_once('../app/controllers/' . $this->currentController . '.php');
                 break;
